@@ -10,12 +10,14 @@ from sklearn.metrics import precision_recall_fscore_support
 import argparse
 import matplotlib.pyplot as plt
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--exp', type=str, default="test", help='Experiment name')
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--exp', type=str, default="test", help='Experiment name')
 
-args = parser.parse_args()
+# args = parser.parse_args()
 
-folders = glob.glob('./{}_seed*'.format(args.exp))
+# folders = glob.glob('./{}_seed*'.format(args.exp))
+
+exp = "test"
 results = []
 
 for folder in folders:
