@@ -54,7 +54,7 @@ else:
     print(features.shape)
 
     print("saving TF-IDF features for ", args.filename)
-    pickle.dump(features, open(feature_out_file. 'wb'))
+    pickle.dump(features, open(feature_out_file, 'wb'))
 
 
 print("splitting to train/test...")
