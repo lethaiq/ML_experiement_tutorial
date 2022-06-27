@@ -37,8 +37,7 @@ texts = df['text'].values
 labels = df['label'].values
 
 
-feature_out_file = './preprocessed/{}_tfidf.pkl'.format(args.filename.replace('.csv',''))
-os.mkdirs(preprocessed)
+feature_out_file = './processed/{}_tfidf.pkl'.format(args.filename.replace('.csv',''))
 
 if os.path.exists(feature_out_file):
     print("found processed dataset. Loading...")
