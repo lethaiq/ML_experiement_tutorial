@@ -5,7 +5,8 @@ import pickle
 import os
 import json
 
-from sklearn.metrics import accuracy_score,f1_score
+from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import precision_recall_fscore_support
 import argparse
 import matplotlib.pyplot as plt
 
@@ -28,6 +29,9 @@ for folder in folders:
       df = pd.read_csv(preds_file)
       acc = accuracy_score(df['truth'], df['prediction'])
       f1 = f1_score(df['truth'], df['prediction'], average="micro")
+      scores = precision_recall_fscore_support(df['truth'], df['prediction'])
+
+
       
       with open(args_file, 'r') as f:
         configs = json.load(f)
@@ -36,6 +40,9 @@ for folder in folders:
       tmp['Model Name'] = run.replace(folder + '/','')
       tmp['Accuracy'] = acc
       tmp['F1'] = f1
+      tmp['Precision'] = scores.precision
+      tmp['Recall'] = scores.recall
+
 
       for k in configs:
         tmp["config_" + k] = configs[k]
@@ -50,5 +57,5 @@ df = df[['Model Name', 'Accuracy', 'F1', 'config_seed']]
 df = df.groupby(['Model Name']).mean()[['Accuracy','F1']]
 print(df.to_latex())
 
-plt.scatter(df['Accuracy', 'F1'])
+plt.scatter(df[['Precision', 'Recall']])
 plt.show()
