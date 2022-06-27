@@ -138,3 +138,7 @@ df = pd.DataFrame()
 df['truth'] = y_test
 df["prediction"] = preds
 df.to_csv(model_output_folder + "/prediction_TESTSET.csv")
+
+print('saving args configurations...')
+with open(model_output_folder+ '/commandline_args.json', 'w') as f:
+    json.dump(args.__dict__, f, indent=2)
