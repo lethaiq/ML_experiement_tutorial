@@ -31,6 +31,7 @@ parser.add_argument('--tfidf_min_df', default=5, type=int, help="minimum number 
 
 parser.add_argument('--filename', type=str, help="dataset filename csv")
 parser.add_argument('--model_name', type=str, default="RF", help='choice of ML model(default: %(default)s)', choices=['RF', 'LR', 'NN'])
+parser.add_argument('--ext', type=str, default="test", help='Experiment name')
 
 
 args = parser.parse_args()
