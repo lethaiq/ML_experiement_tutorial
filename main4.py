@@ -107,7 +107,7 @@ print(classification_report(y_test, preds))
 
 print("save model...")
 if args.model_name == "RF":
-    model_output_file = "/RF_nest{}".format(rf_n_estimators)
+    model_output_file = "/RF_nest{}".format(args.rf_n_estimators)
 
 elif args.model_name == "LR":
     model_output_file = "/LR"
