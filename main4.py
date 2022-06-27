@@ -21,9 +21,9 @@ parser.add_argument('--test_size', default=0.33, type=float, help="ratio of test
 parser.add_argument('--rf_n_estimators', default=100, type=int, help="n_estimators of Random Forest")
 
 parser.add_argument('--nn_lr', default=1e-3, type=float, help="NN learning rate")
-parser.add_argument('--nn_layer1', default=1e-3, type=float, help="NN # of neurals in 1st layer")
-parser.add_argument('--nn_layer2', default=1e-3, type=float, help="NN # of neurals in 2nd layer")
-parser.add_argument('--nn_max_iter', default=1e-3, type=float, help="NN max iterations")
+parser.add_argument('--nn_layer1', default=1e-3, type=int, help="NN # of neurals in 1st layer")
+parser.add_argument('--nn_layer2', default=1e-3, type=int, help="NN # of neurals in 2nd layer")
+parser.add_argument('--nn_max_iter', default=1e-3, type=int, help="NN max iterations")
 
 parser.add_argument('--ngram_upper', default=1, type=int, help="upperbound of n-gram")
 parser.add_argument('--tfidf_max_features', default=500, type=int, help="maximun number of features")
