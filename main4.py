@@ -87,6 +87,7 @@ X_train, X_test, y_train, y_test = train_test_split(features,
                                                     test_size=args.test_size, 
                                                     stratify=labels, 
                                                     random_state=args.seed)
+print(X_test.shape)
 
 if args.model_name == "RF":
     print("training Random Forest model...")
