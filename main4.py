@@ -112,7 +112,7 @@ if args.model_name == "RF":
 elif args.model_name == "LR":
     model_output_file = "/LR"
 
-elif args.model_name == "NN"
+elif args.model_name == "NN":
     model_output_file = "/NN_lr{}_ly1{}_ly2{}_iter{}".format(args.nn_layer1,
                                                             args.nn_layer1,
                                                             args.nn_layer2,
