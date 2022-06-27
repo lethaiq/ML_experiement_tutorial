@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import random
 import os
+import pickle
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
@@ -39,6 +40,7 @@ labels = df['label'].values
 feature_out_file = './preprocessed/{}_tfidf.pkl'.format(args.filename.replace('.csv',''))
 
 if os.path.exists(feature_out_file):
+    print("found processed dataset. Loading...")
     features = pickle.load(open(feature_out_file, 'rb'))
 
 else:
