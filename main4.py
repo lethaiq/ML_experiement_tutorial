@@ -117,15 +117,16 @@ elif args.model_name == "NN":
                                                             args.nn_layer1,
                                                             args.nn_layer2,
                                                             args.nn_max_iter)
+model_output_folder = exp_folder +  model_output_folder
 try:
     os.makedirs(model_output_folder)
 except:
     pass
 
-pickle.dump(model, open(exp_folder +  model_output_folder + "/model.pkl", 'wb'))
+pickle.dump(model, open(model_output_folder + "/model.pkl", 'wb'))
 
 print("save predictions...")
 df = pd.DataFrame()
 df['truth'] = y_test
 df["prediction"] = preds
-df.to_csv(exp_folder +  model_output_file + "/prediction_TESTSET.csv")
+df.to_csv(model_output_folder + "/prediction_TESTSET.csv")
