@@ -107,18 +107,22 @@ print(classification_report(y_test, preds))
 
 print("save model...")
 if args.model_name == "RF":
-    model_output_file = "/RF_nest{}".format(args.rf_n_estimators)
+    model_output_folder = "/RF_nest{}".format(args.rf_n_estimators)
 
 elif args.model_name == "LR":
-    model_output_file = "/LR"
+    model_output_folder = "/LR"
 
 elif args.model_name == "NN":
-    model_output_file = "/NN_lr{}_ly1{}_ly2{}_iter{}".format(args.nn_layer1,
+    model_output_folder = "/NN_lr{}_ly1{}_ly2{}_iter{}".format(args.nn_layer1,
                                                             args.nn_layer1,
                                                             args.nn_layer2,
                                                             args.nn_max_iter)
+try:
+    os.makedirs(model_output_folder)
+except:
+    pass
 
-pickle.dump(model, open(exp_folder +  model_output_file + "/model.pkl", 'wb'))
+pickle.dump(model, open(exp_folder +  model_output_folder + "/model.pkl", 'wb'))
 
 print("save predictions...")
 df = pd.DataFrame()
