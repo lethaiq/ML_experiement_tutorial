@@ -5,7 +5,7 @@ import pickle
 import os
 import json
 
-from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score,f1_score
 import argparse
 
 parser = argparse.ArgumentParser()
