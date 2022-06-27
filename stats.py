@@ -7,6 +7,7 @@ import json
 
 from sklearn.metrics import accuracy_score,f1_score
 import argparse
+import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--exp', type=str, default="test", help='Experiment name')
@@ -49,3 +50,5 @@ df = df[['Model Name', 'Accuracy', 'F1', 'config_seed']]
 df = df.groupby(['Model Name']).mean()[['Accuracy','F1']]
 print(df.to_latex())
 
+plt.scatter(df['Accuracy', 'F1'])
+plt.show()
