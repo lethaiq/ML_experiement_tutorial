@@ -22,6 +22,7 @@ parser.add_argument('--tfidf_max_features', default=500, type=int, help="maximun
 parser.add_argument('--tfidf_min_df', default=5, type=int, help="minimum number of example for tf-idf features")
 parser.add_argument('--filename', type=str, help="dataset filename csv")
 parser.add_argument('--model_name', type=str, default="RF", help='choice of ML model(default: %(default)s)', choices=['RF', 'LR', 'NN'])
+parser.add_argument('--exp', type=str, default="test", help='experiment name')
 
 
 args = parser.parse_args()
@@ -29,6 +30,13 @@ args = parser.parse_args()
 
 random.seed(args.seed)
 np.random.seed(args.seed)
+
+exp_folder = "./{}_seed{}".format(args.exp, args.seed)
+
+try:
+    os.makedirs(exp_folder)
+except:
+    pass
 
 print("loading dataset...")
 df = pd.read_csv(args.filename)
@@ -59,7 +67,7 @@ else:
         os.makedirs('./processed')
     except:
         pass
-        
+
     print("saving TF-IDF features for ", args.filename)
     pickle.dump(features, open(feature_out_file, 'wb'))
 
@@ -94,6 +102,26 @@ model.fit(X_train, y_train)
 
 print("evaluating...")
 preds = model.predict(X_test)
-
 print(classification_report(y_test, preds))
 
+
+print("save model...")
+if args.model_name == "RF":
+    model_output_file = "/RF_nest{}".format(rf_n_estimators)
+
+elif args.model_name == "LR":
+    model_output_file = "/LR"
+
+elif args.model_name == "NN"
+    model_output_file = "/NN_lr{}_ly1{}_ly2{}_iter{}".format(args.nn_layer1,
+                                                            args.nn_layer1,
+                                                            args.nn_layer2,
+                                                            args.nn_max_iter)
+
+pickle.dump(model, open(exp_folder +  model_output_file + "/model.pkl", 'wb'))
+
+print("save predictions...")
+df = pd.DataFrame()
+df['truth'] = y_test
+df["prediction"] = preds
+df.to_csv(exp_folder +  model_output_file + "/prediction_TESTSET.csv")
