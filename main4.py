@@ -3,6 +3,8 @@ import numpy as np
 import random
 import os
 import pickle
+import argparse
+import json
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
@@ -10,7 +12,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-import argparse
 
 parser = argparse.ArgumentParser()
 
