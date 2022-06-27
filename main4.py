@@ -55,7 +55,7 @@ else:
     features = tfidf.fit_transform(texts).toarray()
     print(features.shape)
 
-    os.makedirs(feature_out_file)
+    os.makedirs('./processed')
     print("saving TF-IDF features for ", args.filename)
     pickle.dump(features, open(feature_out_file, 'wb'))
 
