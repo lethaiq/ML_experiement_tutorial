@@ -14,10 +14,18 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--seed', default=12, type=int, help="seeding")
 parser.add_argument('--test_size', default=0.33, type=float, help="ratio of test set")
+
 parser.add_argument('--rf_n_estimators', default=100, type=int, help="n_estimators of Random Forest")
+
+parser.add_argument('--nn_lr', default=1e-3, type=float, help="NN learning rate")
+parser.add_argument('--nn_layer1', default=1e-3, type=float, help="NN # of neurals in 1st layer")
+parser.add_argument('--nn_layer2', default=1e-3, type=float, help="NN # of neurals in 2nd layer")
+parser.add_argument('--nn_max_iter', default=1e-3, type=float, help="NN max iterations")
+
 parser.add_argument('--ngram_upper', default=1, type=int, help="upperbound of n-gram")
 parser.add_argument('--tfidf_max_features', default=500, type=int, help="maximun number of features")
 parser.add_argument('--tfidf_min_df', default=5, type=int, help="minimum number of example for tf-idf features")
+
 parser.add_argument('--filename', type=str, help="dataset filename csv")
 parser.add_argument('--model_name', type=str, default="RF", help='choice of ML model(default: %(default)s)', choices=['RF', 'LR', 'NN'])
 
