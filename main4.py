@@ -87,8 +87,6 @@ X_train, X_test, y_train, y_test = train_test_split(features,
                                                     test_size=args.test_size, 
                                                     stratify=labels, 
                                                     random_state=args.seed)
-print(X_test.shape)
-
 if args.model_name == "RF":
     print("training Random Forest model...")
     model = RandomForestClassifier(n_estimators=args.rf_n_estimators, 
@@ -123,7 +121,7 @@ elif args.model_name == "LR":
     model_output_folder = "/LR"
 
 elif args.model_name == "NN":
-    model_output_folder = "/NN_lr{}_ly1{}_ly2{}_iter{}".format(args.nn_layer1,
+    model_output_folder = "/NN_lr{}_1st{}_2nd{}_iter{}".format(args.nn_layer1,
                                                             args.nn_layer1,
                                                             args.nn_layer2,
                                                             args.nn_max_iter)
