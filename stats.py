@@ -40,3 +40,12 @@ for folder in folders:
         tmp["config_" + k] = configs[k]
         
       results.append(tmp)
+
+df = pd.DataFrame.from_dict(results)
+
+print(df)
+
+df = df[['Model Name', 'Accuracy', 'F1', 'config_seed']]
+df.groupby(['Model Name']).mean()[['Accuracy','F1']]
+print(df.to_latex())
+
