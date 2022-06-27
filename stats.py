@@ -53,9 +53,9 @@ df = pd.DataFrame.from_dict(results)
 
 print(df)
 
-df = df[['Model Name', 'Accuracy', 'F1', 'config_seed']]
-df = df.groupby(['Model Name']).mean()[['Accuracy','F1']]
-print(df.to_latex())
+df2 = df[['Model Name', 'Accuracy', 'F1', 'config_seed']]
+df2 = df.groupby(['Model Name']).mean()[['Accuracy','F1']]
+print(df2.to_latex())
 
 plt.scatter(df[['Precision', 'Recall']])
 plt.show()
