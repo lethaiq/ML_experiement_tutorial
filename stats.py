@@ -29,7 +29,7 @@ for folder in folders:
       df = pd.read_csv(preds_file)
       acc = accuracy_score(df['truth'], df['prediction'])
       f1 = f1_score(df['truth'], df['prediction'], average="micro")
-      scores = precision_recall_fscore_support(df['truth'], df['prediction'])
+      scores = precision_recall_fscore_support(df['truth'], df['prediction'], average='micro')
 
 
       
@@ -40,8 +40,8 @@ for folder in folders:
       tmp['Model Name'] = run.replace(folder + '/','')
       tmp['Accuracy'] = acc
       tmp['F1'] = f1
-      tmp['Precision'] = scores.precision
-      tmp['Recall'] = scores.recall
+      tmp['Precision'] = scores[0]
+      tmp['Recall'] = scores[1]
 
 
       for k in configs:
